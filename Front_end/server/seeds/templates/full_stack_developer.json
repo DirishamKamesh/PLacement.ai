@@ -1,0 +1,76 @@
+{
+  "id": "33333333-3333-3333-3333-333333333333",
+  "title": "Full Stack Developer",
+  "description": "A comprehensive path covering HTML/CSS structure, frontend React frameworks, backend Express.js server layers, databases, and deployment pipelines.",
+  "category": "Development",
+  "difficulty": "Beginner",
+  "estimated_hours": 200,
+  "tags": [
+    "Web Dev",
+    "Fullstack",
+    "React",
+    "Node",
+    "Postgres"
+  ],
+  "is_trending": true,
+  "is_beginner_friendly": true,
+  "nodes": [
+    {
+      "id": "fs-1",
+      "node_type": "topic",
+      "title": "Frontend Fundamentals",
+      "description": "HTML structural layout, vanilla CSS styling, Responsive design paradigms.",
+      "total": 10,
+      "label": "HTML & CSS",
+      "position_x": 100,
+      "position_y": 100
+    },
+    {
+      "id": "fs-2",
+      "node_type": "topic",
+      "title": "React & State Management",
+      "description": "Functional hooks, components state lifecycle, Tailwind CSS integrations.",
+      "total": 15,
+      "label": "VITE + REACT",
+      "position_x": 300,
+      "position_y": 200
+    },
+    {
+      "id": "fs-3",
+      "node_type": "topic",
+      "title": "Backend Express & Node",
+      "description": "REST API design patterns, middle-ware stacks, and file handlers.",
+      "total": 15,
+      "label": "BACKEND",
+      "position_x": 100,
+      "position_y": 350
+    },
+    {
+      "id": "fs-4",
+      "node_type": "milestone",
+      "title": "Database & CI/CD Deployment",
+      "description": "Configure Postgres / Mongo databases and deploy projects to Vercel/Docker.",
+      "total": 0,
+      "label": "DEPLOY",
+      "position_x": 300,
+      "position_y": 450
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "fs-1",
+      "target_node_id": "fs-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "fs-2",
+      "target_node_id": "fs-3",
+      "animated": false
+    },
+    {
+      "source_node_id": "fs-3",
+      "target_node_id": "fs-4",
+      "animated": true
+    }
+  ]
+}

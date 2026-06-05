@@ -1,0 +1,74 @@
+{
+  "id": "f0000000-0000-0000-0000-000000000005",
+  "title": "Next.js",
+  "description": "Learn SEO-friendly React frameworks supporting Server Side Rendering, App Router navigation, static generation, and Server Actions.",
+  "category": "Frontend",
+  "difficulty": "Advanced",
+  "estimated_hours": 45,
+  "tags": [
+    "Next.js",
+    "SSR",
+    "App Router",
+    "React"
+  ],
+  "is_trending": true,
+  "nodes": [
+    {
+      "id": "nxt-1",
+      "node_type": "topic",
+      "title": "App Routing & Layouts",
+      "description": "Folder based routes, nested layouts, loading/error pages, route groups.",
+      "total": 8,
+      "label": "STEP 1",
+      "position_x": 250,
+      "position_y": 100
+    },
+    {
+      "id": "nxt-2",
+      "node_type": "topic",
+      "title": "Server Components vs Client",
+      "description": "Hydration boundaries, fetching inside Server Components, use client directives.",
+      "total": 10,
+      "label": "STEP 2",
+      "position_x": 450,
+      "position_y": 200
+    },
+    {
+      "id": "nxt-3",
+      "node_type": "topic",
+      "title": "Server Actions & API Routes",
+      "description": "Form submissions, mutation actions, revalidation tags, next/headers.",
+      "total": 8,
+      "label": "STEP 3",
+      "position_x": 250,
+      "position_y": 350
+    },
+    {
+      "id": "nxt-4",
+      "node_type": "milestone",
+      "title": "Optimization & Deploying",
+      "description": "next/image, next/font, metadata tags config, deploying on Vercel.",
+      "total": 6,
+      "label": "STEP 4",
+      "position_x": 350,
+      "position_y": 480
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "nxt-1",
+      "target_node_id": "nxt-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "nxt-2",
+      "target_node_id": "nxt-3",
+      "animated": false
+    },
+    {
+      "source_node_id": "nxt-3",
+      "target_node_id": "nxt-4",
+      "animated": true
+    }
+  ]
+}

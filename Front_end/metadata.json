@@ -1,0 +1,6 @@
+{
+  "name": "PlaceMentor AI",
+  "description": "Premium AI-powered success platform for placement preparation, career roadmaps, and interview coaching.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "p0000000-0000-0000-0000-000000000002",
+  "title": "Operating Systems",
+  "description": "Core concepts of process control blocks, CPU scheduler algorithms, virtual memory, paging, thrashing, and disk algorithms.",
+  "category": "Placement",
+  "difficulty": "Intermediate",
+  "estimated_hours": 30,
+  "tags": [
+    "OS",
+    "CS Core",
+    "Placement"
+  ],
+  "nodes": [
+    {
+      "id": "os-1",
+      "node_type": "topic",
+      "title": "Process & CPU Scheduling",
+      "description": "FCFS, SJF, SRTF, Priority, Round Robin scheduler logic.",
+      "total": 10,
+      "label": "PHASE 1",
+      "position_x": 200,
+      "position_y": 100
+    },
+    {
+      "id": "os-2",
+      "node_type": "topic",
+      "title": "Synchronization & Deadlocks",
+      "description": "Semaphores, mutexes, Banker's algorithm, deadlock detection rules.",
+      "total": 8,
+      "label": "PHASE 2",
+      "position_x": 400,
+      "position_y": 200
+    },
+    {
+      "id": "os-3",
+      "node_type": "milestone",
+      "title": "Memory & Disk Scheduler",
+      "description": "Paging, TLB, page replacement (LRU, FIFO), SSTF, SCAN disk rules.",
+      "total": 10,
+      "label": "PHASE 3",
+      "position_x": 300,
+      "position_y": 320
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "os-1",
+      "target_node_id": "os-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "os-2",
+      "target_node_id": "os-3",
+      "animated": true
+    }
+  ]
+}

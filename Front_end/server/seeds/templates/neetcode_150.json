@@ -1,0 +1,105 @@
+{
+  "id": "d0000000-0000-0000-0000-000000000001",
+  "title": "NeetCode 150",
+  "description": "The standard 150 curated LeetCode problems covering all major data structures and algorithmic patterns required for top tech interviews.",
+  "category": "DSA",
+  "difficulty": "Advanced",
+  "estimated_hours": 150,
+  "tags": [
+    "DSA",
+    "LeetCode",
+    "Interview Prep",
+    "NeetCode"
+  ],
+  "is_featured": true,
+  "is_trending": true,
+  "nodes": [
+    {
+      "id": "nc-1",
+      "node_type": "topic",
+      "title": "Arrays & Hashing",
+      "description": "Contains Duplicate, Valid Anagram, Two Sum, Group Anagrams, Top K Frequent.",
+      "total": 9,
+      "label": "STEP 1",
+      "position_x": 200,
+      "position_y": 100
+    },
+    {
+      "id": "nc-2",
+      "node_type": "topic",
+      "title": "Two Pointers & Sliding Window",
+      "description": "Valid Palindrome, Two Sum II, 3Sum, Container with Most Water, Best Time to Buy/Sell Stock.",
+      "total": 9,
+      "label": "STEP 2",
+      "position_x": 400,
+      "position_y": 200
+    },
+    {
+      "id": "nc-3",
+      "node_type": "topic",
+      "title": "Stack & Binary Search",
+      "description": "Valid Parentheses, Min Stack, Evaluate Reverse Polish Notation, Search in Rotated Sorted Array.",
+      "total": 10,
+      "label": "STEP 3",
+      "position_x": 200,
+      "position_y": 350
+    },
+    {
+      "id": "nc-4",
+      "node_type": "topic",
+      "title": "Linked List & Trees",
+      "description": "Reverse Linked List, Merge Two Lists, Binary Tree Maximum Path Sum, Serialize/Deserialize Tree.",
+      "total": 21,
+      "label": "STEP 4",
+      "position_x": 400,
+      "position_y": 450
+    },
+    {
+      "id": "nc-5",
+      "node_type": "topic",
+      "title": "Backtracking & Graphs",
+      "description": "Subsets, Combination Sum, Word Search, Number of Islands, Clone Graph, Course Schedule.",
+      "total": 15,
+      "label": "STEP 5",
+      "position_x": 200,
+      "position_y": 600
+    },
+    {
+      "id": "nc-6",
+      "node_type": "milestone",
+      "title": "Dynamic Programming & Greedy",
+      "description": "Climbing Stairs, House Robber, Longest Common Subsequence, Edit Distance.",
+      "total": 20,
+      "label": "FINALE",
+      "position_x": 300,
+      "position_y": 750
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "nc-1",
+      "target_node_id": "nc-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "nc-2",
+      "target_node_id": "nc-3",
+      "animated": false
+    },
+    {
+      "source_node_id": "nc-3",
+      "target_node_id": "nc-4",
+      "animated": true
+    },
+    {
+      "source_node_id": "nc-4",
+      "target_node_id": "nc-5",
+      "animated": false
+    },
+    {
+      "source_node_id": "nc-5",
+      "target_node_id": "nc-6",
+      "animated": true
+    }
+  ]
+}

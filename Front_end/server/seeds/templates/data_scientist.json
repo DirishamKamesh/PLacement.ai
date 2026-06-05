@@ -1,0 +1,59 @@
+{
+  "id": "55555555-5555-5555-5555-555555555555",
+  "title": "Data Scientist",
+  "description": "Gain fluency in math, visual storytelling, exploratory analysis, regression/classification, and scalable big data querying.",
+  "category": "AI / ML",
+  "difficulty": "Intermediate",
+  "estimated_hours": 160,
+  "tags": [
+    "Data Science",
+    "Pandas",
+    "Analytics",
+    "Statistics"
+  ],
+  "is_beginner_friendly": true,
+  "nodes": [
+    {
+      "id": "ds-1",
+      "node_type": "topic",
+      "title": "Math & Statistics",
+      "description": "Probability theory, hypothesis testing, linear algebra concepts.",
+      "total": 10,
+      "label": "MATH",
+      "position_x": 100,
+      "position_y": 100
+    },
+    {
+      "id": "ds-2",
+      "node_type": "topic",
+      "title": "Data Exploration & Pandas",
+      "description": "Data wrangling, cleaning operations, and Matplotlib visualizations.",
+      "total": 15,
+      "label": "ANALYSIS",
+      "position_x": 300,
+      "position_y": 200
+    },
+    {
+      "id": "ds-3",
+      "node_type": "topic",
+      "title": "Supervised Learning",
+      "description": "Implement regression, decision trees, and random forests models.",
+      "total": 20,
+      "label": "ML MODELS",
+      "position_x": 200,
+      "position_y": 360
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "ds-1",
+      "target_node_id": "ds-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "ds-2",
+      "target_node_id": "ds-3",
+      "animated": true
+    }
+  ]
+}

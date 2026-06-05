@@ -1,0 +1,73 @@
+{
+  "id": "f0000000-0000-0000-0000-000000000003",
+  "title": "JavaScript",
+  "description": "Deep dive into modern ECMAScript features, DOM manipulation, asynchronous programming, APIs fetching, and scope behavior.",
+  "category": "Frontend",
+  "difficulty": "Beginner",
+  "estimated_hours": 40,
+  "tags": [
+    "JS",
+    "JavaScript",
+    "Programming Core"
+  ],
+  "is_beginner_friendly": true,
+  "nodes": [
+    {
+      "id": "js-1",
+      "node_type": "topic",
+      "title": "Syntax & Fundamentals",
+      "description": "Variables, loops, functions, array methods, scoping and closures.",
+      "total": 12,
+      "label": "PART 1",
+      "position_x": 200,
+      "position_y": 100
+    },
+    {
+      "id": "js-2",
+      "node_type": "topic",
+      "title": "DOM & Event Loop",
+      "description": "Selecting elements, adding listeners, bubble vs capture, event delegation.",
+      "total": 10,
+      "label": "PART 2",
+      "position_x": 400,
+      "position_y": 200
+    },
+    {
+      "id": "js-3",
+      "node_type": "topic",
+      "title": "Async JavaScript",
+      "description": "Promises, Async/Await, Fetch API, error handling, try/catch structures.",
+      "total": 8,
+      "label": "PART 3",
+      "position_x": 200,
+      "position_y": 350
+    },
+    {
+      "id": "js-4",
+      "node_type": "milestone",
+      "title": "ES6+ Features & Modules",
+      "description": "Destructuring, spread operator, modules (import/export), classes.",
+      "total": 10,
+      "label": "FINALE",
+      "position_x": 300,
+      "position_y": 480
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "js-1",
+      "target_node_id": "js-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "js-2",
+      "target_node_id": "js-3",
+      "animated": false
+    },
+    {
+      "source_node_id": "js-3",
+      "target_node_id": "js-4",
+      "animated": true
+    }
+  ]
+}

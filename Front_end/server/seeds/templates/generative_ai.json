@@ -1,0 +1,75 @@
+{
+  "id": "a0000000-0000-0000-0000-000000000003",
+  "title": "Generative AI",
+  "description": "Learn LLM pipelines, prompt design rules, semantic embeddings, vector databases, and orchestrating RAG workflows.",
+  "category": "AI / ML",
+  "difficulty": "Advanced",
+  "estimated_hours": 80,
+  "tags": [
+    "GenAI",
+    "LLMs",
+    "VectorDB",
+    "RAG"
+  ],
+  "is_featured": true,
+  "is_trending": true,
+  "nodes": [
+    {
+      "id": "gen-1",
+      "node_type": "topic",
+      "title": "Prompting & LLM APIs",
+      "description": "System prompts, zero-shot/few-shot, token constraints, temperature parameters.",
+      "total": 8,
+      "label": "WEEK 1",
+      "position_x": 250,
+      "position_y": 100
+    },
+    {
+      "id": "gen-2",
+      "node_type": "topic",
+      "title": "Vector Embeddings",
+      "description": "Distance calculations (cosine, dot), tokenization layers, generating embeddings.",
+      "total": 10,
+      "label": "WEEK 2",
+      "position_x": 450,
+      "position_y": 200
+    },
+    {
+      "id": "gen-3",
+      "node_type": "topic",
+      "title": "Vector Databases",
+      "description": "Pinecone, ChromaDB, PGVector indexing, metadata queries.",
+      "total": 8,
+      "label": "WEEK 3",
+      "position_x": 250,
+      "position_y": 350
+    },
+    {
+      "id": "gen-4",
+      "node_type": "milestone",
+      "title": "Retrieval Augmented Gen",
+      "description": "LangChain indexing, document loaders, chunking strategies, generation steps.",
+      "total": 12,
+      "label": "WEEK 4",
+      "position_x": 350,
+      "position_y": 480
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "gen-1",
+      "target_node_id": "gen-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "gen-2",
+      "target_node_id": "gen-3",
+      "animated": false
+    },
+    {
+      "source_node_id": "gen-3",
+      "target_node_id": "gen-4",
+      "animated": true
+    }
+  ]
+}

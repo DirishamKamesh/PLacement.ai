@@ -1,0 +1,57 @@
+{
+  "id": "p0000000-0000-0000-0000-000000000003",
+  "title": "DBMS",
+  "description": "Learn SQL schema rules, normal forms (1NF-BCNF), ACID transaction locks, and relational DB algebra.",
+  "category": "Placement",
+  "difficulty": "Intermediate",
+  "estimated_hours": 35,
+  "tags": [
+    "DBMS",
+    "SQL",
+    "CS Core"
+  ],
+  "nodes": [
+    {
+      "id": "db-1",
+      "node_type": "topic",
+      "title": "ER Model & SQL Queries",
+      "description": "ER mapping, keys (candidate, primary), aggregation SQL patterns.",
+      "total": 10,
+      "label": "STEP 1",
+      "position_x": 200,
+      "position_y": 100
+    },
+    {
+      "id": "db-2",
+      "node_type": "topic",
+      "title": "Normalization Normal Forms",
+      "description": "1NF, 2NF, 3NF, BCNF algorithms, dependency preservation rules.",
+      "total": 8,
+      "label": "STEP 2",
+      "position_x": 400,
+      "position_y": 200
+    },
+    {
+      "id": "db-3",
+      "node_type": "milestone",
+      "title": "ACID & Index Files",
+      "description": "Serializability, 2PL locks, dense/sparse indexing, B+ tree properties.",
+      "total": 10,
+      "label": "STEP 3",
+      "position_x": 300,
+      "position_y": 320
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "db-1",
+      "target_node_id": "db-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "db-2",
+      "target_node_id": "db-3",
+      "animated": true
+    }
+  ]
+}

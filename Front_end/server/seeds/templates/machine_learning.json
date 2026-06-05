@@ -1,0 +1,73 @@
+{
+  "id": "a0000000-0000-0000-0000-000000000002",
+  "title": "Machine Learning",
+  "description": "Master math prerequisites, features preprocessing, regression and classification modeling, and evaluation parameters.",
+  "category": "AI / ML",
+  "difficulty": "Intermediate",
+  "estimated_hours": 90,
+  "tags": [
+    "Machine Learning",
+    "Data Science",
+    "Scikit-Learn"
+  ],
+  "is_featured": true,
+  "nodes": [
+    {
+      "id": "ml-1",
+      "node_type": "topic",
+      "title": "Preprocessing & Math",
+      "description": "Linear algebra, calculus vectors, scaling, encoding values, imputation.",
+      "total": 15,
+      "label": "PHASE 1",
+      "position_x": 200,
+      "position_y": 100
+    },
+    {
+      "id": "ml-2",
+      "node_type": "topic",
+      "title": "Supervised Models",
+      "description": "Regression models, decision trees, random forests, boosting networks.",
+      "total": 18,
+      "label": "PHASE 2",
+      "position_x": 400,
+      "position_y": 200
+    },
+    {
+      "id": "ml-3",
+      "node_type": "topic",
+      "title": "Unsupervised Models",
+      "description": "K-Means clustering, PCA dimension reduction, hierarchical clustering.",
+      "total": 10,
+      "label": "PHASE 3",
+      "position_x": 200,
+      "position_y": 350
+    },
+    {
+      "id": "ml-4",
+      "node_type": "milestone",
+      "title": "Evaluation Metrics",
+      "description": "Precision, Recall, ROC AUC curves, Cross-Validation scoring.",
+      "total": 8,
+      "label": "PHASE 4",
+      "position_x": 300,
+      "position_y": 480
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "ml-1",
+      "target_node_id": "ml-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "ml-2",
+      "target_node_id": "ml-3",
+      "animated": false
+    },
+    {
+      "source_node_id": "ml-3",
+      "target_node_id": "ml-4",
+      "animated": true
+    }
+  ]
+}

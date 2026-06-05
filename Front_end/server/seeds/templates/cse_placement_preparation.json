@@ -1,0 +1,91 @@
+{
+  "id": "11111111-1111-1111-1111-111111111111",
+  "title": "CSE Placement Preparation",
+  "description": "Master the complete campus placement curriculum: aptitude, operating systems, databases, Object Oriented Programming, and basic coding constructs.",
+  "category": "Placement",
+  "difficulty": "Intermediate",
+  "estimated_hours": 120,
+  "tags": [
+    "Aptitude",
+    "DBMS",
+    "OS",
+    "OOPs",
+    "Placement"
+  ],
+  "is_featured": true,
+  "is_trending": true,
+  "nodes": [
+    {
+      "id": "pl-1",
+      "node_type": "topic",
+      "title": "Quantitative Aptitude",
+      "description": "Solve logical reasoning, speed-time, and probability problems.",
+      "total": 15,
+      "label": "WEEK 1",
+      "position_x": 100,
+      "position_y": 100
+    },
+    {
+      "id": "pl-2",
+      "node_type": "topic",
+      "title": "Operating Systems",
+      "description": "Process synchronization, scheduling algorithms, and memory management concepts.",
+      "total": 20,
+      "label": "WEEK 2",
+      "position_x": 300,
+      "position_y": 200
+    },
+    {
+      "id": "pl-3",
+      "node_type": "topic",
+      "title": "Database Systems",
+      "description": "SQL normalization, indexing, Joins, and transaction protocols.",
+      "total": 20,
+      "label": "WEEK 3",
+      "position_x": 100,
+      "position_y": 350
+    },
+    {
+      "id": "pl-4",
+      "node_type": "topic",
+      "title": "Object-Oriented Programming",
+      "description": "Polymorphism, Inheritance, Encapsulation, and Design patterns in C++/Java.",
+      "total": 15,
+      "label": "WEEK 4",
+      "position_x": 300,
+      "position_y": 450
+    },
+    {
+      "id": "pl-5",
+      "node_type": "milestone",
+      "title": "Placement Readiness Mock",
+      "description": "Complete full-length simulated technical interview tests.",
+      "total": 0,
+      "label": "FINALE",
+      "position_x": 200,
+      "position_y": 600
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "pl-1",
+      "target_node_id": "pl-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "pl-2",
+      "target_node_id": "pl-3",
+      "animated": false
+    },
+    {
+      "source_node_id": "pl-3",
+      "target_node_id": "pl-4",
+      "animated": false
+    },
+    {
+      "source_node_id": "pl-4",
+      "target_node_id": "pl-5",
+      "animated": true
+    }
+  ]
+}

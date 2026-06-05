@@ -1,0 +1,58 @@
+{
+  "id": "p0000000-0000-0000-0000-000000000001",
+  "title": "Aptitude",
+  "description": "Master quantitative math tricks, logical connections, coding puzzles, and verbal reasoning skills for screening exams.",
+  "category": "Placement",
+  "difficulty": "Beginner",
+  "estimated_hours": 50,
+  "tags": [
+    "Aptitude",
+    "Math Tricks",
+    "Placement Exams"
+  ],
+  "is_beginner_friendly": true,
+  "nodes": [
+    {
+      "id": "apt-1",
+      "node_type": "topic",
+      "title": "Quantitative Skills",
+      "description": "Averages, speed, work, simple/compound interest, statistics math.",
+      "total": 15,
+      "label": "STEP 1",
+      "position_x": 200,
+      "position_y": 100
+    },
+    {
+      "id": "apt-2",
+      "node_type": "topic",
+      "title": "Logical Reasoning",
+      "description": "Coding-decoding, blood relations, syllogisms, grid mapping.",
+      "total": 12,
+      "label": "STEP 2",
+      "position_x": 400,
+      "position_y": 200
+    },
+    {
+      "id": "apt-3",
+      "node_type": "milestone",
+      "title": "Verbal & Data Interp",
+      "description": "Comprehension analysis, paragraph ordering, charts and maps.",
+      "total": 8,
+      "label": "STEP 3",
+      "position_x": 300,
+      "position_y": 320
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "apt-1",
+      "target_node_id": "apt-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "apt-2",
+      "target_node_id": "apt-3",
+      "animated": true
+    }
+  ]
+}

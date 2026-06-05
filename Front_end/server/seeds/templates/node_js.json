@@ -1,0 +1,57 @@
+{
+  "id": "b0000000-0000-0000-0000-000000000001",
+  "title": "Node.js",
+  "description": "Learn server-side JavaScript: runtimes, the event loop, file systems, streams, buffers, and package management systems.",
+  "category": "Backend",
+  "difficulty": "Intermediate",
+  "estimated_hours": 35,
+  "tags": [
+    "Node.js",
+    "Runtime",
+    "Backend core"
+  ],
+  "nodes": [
+    {
+      "id": "node-1",
+      "node_type": "topic",
+      "title": "Node Architecture",
+      "description": "V8 engine, Libuv, asynchronous event loop thread pool model.",
+      "total": 5,
+      "label": "WEEK 1",
+      "position_x": 200,
+      "position_y": 100
+    },
+    {
+      "id": "node-2",
+      "node_type": "topic",
+      "title": "File System & Streams",
+      "description": "FS module, buffers, pipe streams, readable/writable structures.",
+      "total": 8,
+      "label": "WEEK 2",
+      "position_x": 400,
+      "position_y": 200
+    },
+    {
+      "id": "node-3",
+      "node_type": "milestone",
+      "title": "HTTP Module & Package",
+      "description": "Creating server sockets, parsing requests, managing package.json dependencies.",
+      "total": 7,
+      "label": "WEEK 3",
+      "position_x": 300,
+      "position_y": 320
+    }
+  ],
+  "edges": [
+    {
+      "source_node_id": "node-1",
+      "target_node_id": "node-2",
+      "animated": true
+    },
+    {
+      "source_node_id": "node-2",
+      "target_node_id": "node-3",
+      "animated": true
+    }
+  ]
+}
