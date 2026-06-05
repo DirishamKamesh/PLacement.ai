@@ -14,7 +14,7 @@ import {
   ResponsiveContainer
 } from 'recharts';
 import { cn } from '../lib/utils';
-import { api } from '../lib/api';
+import { RoadmapService, ResumeService, AttendanceService } from '../lib/supabaseService';
 import { useAuthStore } from '../stores/authStore';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,17 +30,17 @@ export const Dashboard = () => {
     const fetchDashboardData = async () => {
       try {
         // Fetch active roadmap
-        const rmData = await api.get<{ roadmaps: any[] }>('/api/roadmaps');
+        const rmData = await RoadmapService.fetchRoadmaps();
         if (rmData.roadmaps.length > 0) {
           setRoadmap(rmData.roadmaps[0]);
         }
 
         // Fetch resume list
-        const resData = await api.get<{ resumes: any[] }>('/api/resumes');
+        const resData = await ResumeService.fetchResumes();
         setResumes(resData.resumes);
 
         // Fetch attendance stats
-        const attData = await api.get<{ stats: any }>('/api/attendance');
+        const attData = await AttendanceService.fetchAttendance();
         setAttendanceStats(attData.stats);
       } catch (err) {
         console.error('Failed to load dashboard data:', err);

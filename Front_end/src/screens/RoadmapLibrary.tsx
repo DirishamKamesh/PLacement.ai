@@ -16,7 +16,7 @@ import {
   BookmarkCheck,
   HeartOff
 } from 'lucide-react';
-import { api } from '../lib/api';
+import { TemplateService } from '../lib/supabaseService';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
@@ -55,7 +55,7 @@ export const RoadmapLibrary = () => {
   const fetchTemplates = async () => {
     try {
       setIsLoading(true);
-      const data = await api.get<{ templates: Template[] }>('/api/roadmaps/templates');
+      const data = await TemplateService.fetchTemplates();
       setTemplates(data.templates || []);
     } catch (err) {
       console.error('Failed to load roadmap templates:', err);
@@ -114,7 +114,7 @@ export const RoadmapLibrary = () => {
   const handleLike = async (templateId: string, e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      const res = await api.post<{ liked: boolean; likes_count: number }>(`/api/roadmaps/templates/${templateId}/like`);
+      const res = await TemplateService.toggleLike(templateId);
       setTemplates(prev =>
         prev.map(t =>
           t.id === templateId
@@ -131,7 +131,7 @@ export const RoadmapLibrary = () => {
   const handleBookmark = async (templateId: string, e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      const res = await api.post<{ bookmarked: boolean }>(`/api/roadmaps/templates/${templateId}/bookmark`);
+      const res = await TemplateService.toggleBookmark(templateId);
       setTemplates(prev =>
         prev.map(t =>
           t.id === templateId
@@ -149,7 +149,7 @@ export const RoadmapLibrary = () => {
     e.stopPropagation();
     try {
       setCloningId(templateId);
-      const res = await api.post<{ cloned_roadmap: { id: string } }>(`/api/roadmaps/templates/${templateId}/clone`);
+      const res = await TemplateService.cloneTemplate(templateId);
       // Redirect to specific cloned roadmap using query string param
       navigate(`/roadmap?id=${res.cloned_roadmap.id}`);
     } catch (err: any) {

@@ -781,7 +781,7 @@ VALUES
 -- Seeding template: Aptitude
 INSERT INTO public.roadmap_templates (id, title, description, category, difficulty, estimated_hours, tags, visibility, is_public, is_featured, is_trending, is_beginner_friendly, is_advanced)
 VALUES (
-  'p0000000-0000-0000-0000-000000000001',
+  'f0000000-0000-0000-0000-000000000001',
   'Aptitude',
   'Master quantitative math tricks, logical connections, coding puzzles, and verbal reasoning skills for screening exams.',
   'Placement',
@@ -807,24 +807,24 @@ VALUES (
   is_advanced = EXCLUDED.is_advanced;
 
 -- Clear previous nodes/edges for this template to prevent duplicates on override
-DELETE FROM public.roadmap_template_nodes WHERE template_id = 'p0000000-0000-0000-0000-000000000001';
-DELETE FROM public.roadmap_template_edges WHERE template_id = 'p0000000-0000-0000-0000-000000000001';
+DELETE FROM public.roadmap_template_nodes WHERE template_id = 'f0000000-0000-0000-0000-000000000001';
+DELETE FROM public.roadmap_template_edges WHERE template_id = 'f0000000-0000-0000-0000-000000000001';
 
 INSERT INTO public.roadmap_template_nodes (id, template_id, node_type, title, description, total, label, position_x, position_y)
 VALUES
-  ('39998939-0f9f-c65e-563c-4fcaa2007a7d', 'p0000000-0000-0000-0000-000000000001', 'topic', 'Quantitative Skills', 'Averages, speed, work, simple/compound interest, statistics math.', 15, 'STEP 1', 200, 100),
-  ('8c76687c-2830-dd5c-4e26-4ede9f7e435f', 'p0000000-0000-0000-0000-000000000001', 'topic', 'Logical Reasoning', 'Coding-decoding, blood relations, syllogisms, grid mapping.', 12, 'STEP 2', 400, 200),
-  ('f09dc03e-0295-4c46-d084-3eb3d9ff92e9', 'p0000000-0000-0000-0000-000000000001', 'milestone', 'Verbal & Data Interp', 'Comprehension analysis, paragraph ordering, charts and maps.', 8, 'STEP 3', 300, 320);
+  ('39998939-0f9f-c65e-563c-4fcaa2007a7d', 'f0000000-0000-0000-0000-000000000001', 'topic', 'Quantitative Skills', 'Averages, speed, work, simple/compound interest, statistics math.', 15, 'STEP 1', 200, 100),
+  ('8c76687c-2830-dd5c-4e26-4ede9f7e435f', 'f0000000-0000-0000-0000-000000000001', 'topic', 'Logical Reasoning', 'Coding-decoding, blood relations, syllogisms, grid mapping.', 12, 'STEP 2', 400, 200),
+  ('f09dc03e-0295-4c46-d084-3eb3d9ff92e9', 'f0000000-0000-0000-0000-000000000001', 'milestone', 'Verbal & Data Interp', 'Comprehension analysis, paragraph ordering, charts and maps.', 8, 'STEP 3', 300, 320);
 
 INSERT INTO public.roadmap_template_edges (template_id, source_node_id, target_node_id, animated)
 VALUES
-  ('p0000000-0000-0000-0000-000000000001', '39998939-0f9f-c65e-563c-4fcaa2007a7d', '8c76687c-2830-dd5c-4e26-4ede9f7e435f', true),
-  ('p0000000-0000-0000-0000-000000000001', '8c76687c-2830-dd5c-4e26-4ede9f7e435f', 'f09dc03e-0295-4c46-d084-3eb3d9ff92e9', true);
+  ('f0000000-0000-0000-0000-000000000001', '39998939-0f9f-c65e-563c-4fcaa2007a7d', '8c76687c-2830-dd5c-4e26-4ede9f7e435f', true),
+  ('f0000000-0000-0000-0000-000000000001', '8c76687c-2830-dd5c-4e26-4ede9f7e435f', 'f09dc03e-0295-4c46-d084-3eb3d9ff92e9', true);
 
 -- Seeding template: Operating Systems
 INSERT INTO public.roadmap_templates (id, title, description, category, difficulty, estimated_hours, tags, visibility, is_public, is_featured, is_trending, is_beginner_friendly, is_advanced)
 VALUES (
-  'p0000000-0000-0000-0000-000000000002',
+  'f0000000-0000-0000-0000-000000000002',
   'Operating Systems',
   'Core concepts of process control blocks, CPU scheduler algorithms, virtual memory, paging, thrashing, and disk algorithms.',
   'Placement',
@@ -850,24 +850,24 @@ VALUES (
   is_advanced = EXCLUDED.is_advanced;
 
 -- Clear previous nodes/edges for this template to prevent duplicates on override
-DELETE FROM public.roadmap_template_nodes WHERE template_id = 'p0000000-0000-0000-0000-000000000002';
-DELETE FROM public.roadmap_template_edges WHERE template_id = 'p0000000-0000-0000-0000-000000000002';
+DELETE FROM public.roadmap_template_nodes WHERE template_id = 'f0000000-0000-0000-0000-000000000002';
+DELETE FROM public.roadmap_template_edges WHERE template_id = 'f0000000-0000-0000-0000-000000000002';
 
 INSERT INTO public.roadmap_template_nodes (id, template_id, node_type, title, description, total, label, position_x, position_y)
 VALUES
-  ('d2e6ab75-37da-cd2e-9499-3513b4529e8b', 'p0000000-0000-0000-0000-000000000002', 'topic', 'Process & CPU Scheduling', 'FCFS, SJF, SRTF, Priority, Round Robin scheduler logic.', 10, 'PHASE 1', 200, 100),
-  ('d8517a76-f3d4-8fb4-f370-708da0a0b872', 'p0000000-0000-0000-0000-000000000002', 'topic', 'Synchronization & Deadlocks', 'Semaphores, mutexes, Banker''s algorithm, deadlock detection rules.', 8, 'PHASE 2', 400, 200),
-  ('ee045df8-df93-a84d-2c2c-115f49c464f6', 'p0000000-0000-0000-0000-000000000002', 'milestone', 'Memory & Disk Scheduler', 'Paging, TLB, page replacement (LRU, FIFO), SSTF, SCAN disk rules.', 10, 'PHASE 3', 300, 320);
+  ('d2e6ab75-37da-cd2e-9499-3513b4529e8b', 'f0000000-0000-0000-0000-000000000002', 'topic', 'Process & CPU Scheduling', 'FCFS, SJF, SRTF, Priority, Round Robin scheduler logic.', 10, 'PHASE 1', 200, 100),
+  ('d8517a76-f3d4-8fb4-f370-708da0a0b872', 'f0000000-0000-0000-0000-000000000002', 'topic', 'Synchronization & Deadlocks', 'Semaphores, mutexes, Banker''s algorithm, deadlock detection rules.', 8, 'PHASE 2', 400, 200),
+  ('ee045df8-df93-a84d-2c2c-115f49c464f6', 'f0000000-0000-0000-0000-000000000002', 'milestone', 'Memory & Disk Scheduler', 'Paging, TLB, page replacement (LRU, FIFO), SSTF, SCAN disk rules.', 10, 'PHASE 3', 300, 320);
 
 INSERT INTO public.roadmap_template_edges (template_id, source_node_id, target_node_id, animated)
 VALUES
-  ('p0000000-0000-0000-0000-000000000002', 'd2e6ab75-37da-cd2e-9499-3513b4529e8b', 'd8517a76-f3d4-8fb4-f370-708da0a0b872', true),
-  ('p0000000-0000-0000-0000-000000000002', 'd8517a76-f3d4-8fb4-f370-708da0a0b872', 'ee045df8-df93-a84d-2c2c-115f49c464f6', true);
+  ('f0000000-0000-0000-0000-000000000002', 'd2e6ab75-37da-cd2e-9499-3513b4529e8b', 'd8517a76-f3d4-8fb4-f370-708da0a0b872', true),
+  ('f0000000-0000-0000-0000-000000000002', 'd8517a76-f3d4-8fb4-f370-708da0a0b872', 'ee045df8-df93-a84d-2c2c-115f49c464f6', true);
 
 -- Seeding template: DBMS
 INSERT INTO public.roadmap_templates (id, title, description, category, difficulty, estimated_hours, tags, visibility, is_public, is_featured, is_trending, is_beginner_friendly, is_advanced)
 VALUES (
-  'p0000000-0000-0000-0000-000000000003',
+  'f0000000-0000-0000-0000-000000000003',
   'DBMS',
   'Learn SQL schema rules, normal forms (1NF-BCNF), ACID transaction locks, and relational DB algebra.',
   'Placement',
@@ -893,24 +893,24 @@ VALUES (
   is_advanced = EXCLUDED.is_advanced;
 
 -- Clear previous nodes/edges for this template to prevent duplicates on override
-DELETE FROM public.roadmap_template_nodes WHERE template_id = 'p0000000-0000-0000-0000-000000000003';
-DELETE FROM public.roadmap_template_edges WHERE template_id = 'p0000000-0000-0000-0000-000000000003';
+DELETE FROM public.roadmap_template_nodes WHERE template_id = 'f0000000-0000-0000-0000-000000000003';
+DELETE FROM public.roadmap_template_edges WHERE template_id = 'f0000000-0000-0000-0000-000000000003';
 
 INSERT INTO public.roadmap_template_nodes (id, template_id, node_type, title, description, total, label, position_x, position_y)
 VALUES
-  ('403cacaf-f9c7-a825-d0b1-5e96cd7ff047', 'p0000000-0000-0000-0000-000000000003', 'topic', 'ER Model & SQL Queries', 'ER mapping, keys (candidate, primary), aggregation SQL patterns.', 10, 'STEP 1', 200, 100),
-  ('a227acdf-9ba2-6970-83a9-746b9967dea8', 'p0000000-0000-0000-0000-000000000003', 'topic', 'Normalization Normal Forms', '1NF, 2NF, 3NF, BCNF algorithms, dependency preservation rules.', 8, 'STEP 2', 400, 200),
-  ('30ac97cd-9491-f136-4107-9a53c894cdcc', 'p0000000-0000-0000-0000-000000000003', 'milestone', 'ACID & Index Files', 'Serializability, 2PL locks, dense/sparse indexing, B+ tree properties.', 10, 'STEP 3', 300, 320);
+  ('403cacaf-f9c7-a825-d0b1-5e96cd7ff047', 'f0000000-0000-0000-0000-000000000003', 'topic', 'ER Model & SQL Queries', 'ER mapping, keys (candidate, primary), aggregation SQL patterns.', 10, 'STEP 1', 200, 100),
+  ('a227acdf-9ba2-6970-83a9-746b9967dea8', 'f0000000-0000-0000-0000-000000000003', 'topic', 'Normalization Normal Forms', '1NF, 2NF, 3NF, BCNF algorithms, dependency preservation rules.', 8, 'STEP 2', 400, 200),
+  ('30ac97cd-9491-f136-4107-9a53c894cdcc', 'f0000000-0000-0000-0000-000000000003', 'milestone', 'ACID & Index Files', 'Serializability, 2PL locks, dense/sparse indexing, B+ tree properties.', 10, 'STEP 3', 300, 320);
 
 INSERT INTO public.roadmap_template_edges (template_id, source_node_id, target_node_id, animated)
 VALUES
-  ('p0000000-0000-0000-0000-000000000003', '403cacaf-f9c7-a825-d0b1-5e96cd7ff047', 'a227acdf-9ba2-6970-83a9-746b9967dea8', true),
-  ('p0000000-0000-0000-0000-000000000003', 'a227acdf-9ba2-6970-83a9-746b9967dea8', '30ac97cd-9491-f136-4107-9a53c894cdcc', true);
+  ('f0000000-0000-0000-0000-000000000003', '403cacaf-f9c7-a825-d0b1-5e96cd7ff047', 'a227acdf-9ba2-6970-83a9-746b9967dea8', true),
+  ('f0000000-0000-0000-0000-000000000003', 'a227acdf-9ba2-6970-83a9-746b9967dea8', '30ac97cd-9491-f136-4107-9a53c894cdcc', true);
 
 -- Seeding template: Computer Networks
 INSERT INTO public.roadmap_templates (id, title, description, category, difficulty, estimated_hours, tags, visibility, is_public, is_featured, is_trending, is_beginner_friendly, is_advanced)
 VALUES (
-  'p0000000-0000-0000-0000-000000000004',
+  'f0000000-0000-0000-0000-000000000004',
   'Computer Networks',
   'Learn network reference models, TCP handshake sequences, routing math, IP subnetting, and application layer protocols.',
   'Placement',
@@ -936,24 +936,24 @@ VALUES (
   is_advanced = EXCLUDED.is_advanced;
 
 -- Clear previous nodes/edges for this template to prevent duplicates on override
-DELETE FROM public.roadmap_template_nodes WHERE template_id = 'p0000000-0000-0000-0000-000000000004';
-DELETE FROM public.roadmap_template_edges WHERE template_id = 'p0000000-0000-0000-0000-000000000004';
+DELETE FROM public.roadmap_template_nodes WHERE template_id = 'f0000000-0000-0000-0000-000000000004';
+DELETE FROM public.roadmap_template_edges WHERE template_id = 'f0000000-0000-0000-0000-000000000004';
 
 INSERT INTO public.roadmap_template_nodes (id, template_id, node_type, title, description, total, label, position_x, position_y)
 VALUES
-  ('4e55840c-3daf-6fc5-800d-8e0c12b63722', 'p0000000-0000-0000-0000-000000000004', 'topic', 'OSI Reference Model', 'Physical, Data Link, Network, Transport layers services.', 8, 'WEEK 1', 200, 100),
-  ('9c31b0aa-e6c7-dcd3-f683-f7044182af35', 'p0000000-0000-0000-0000-000000000004', 'topic', 'IP Subnetting & Routing', 'Classless routing CIDR, subnet masks, Dijkstra routing, Link State protocol.', 10, 'WEEK 2', 400, 200),
-  ('90c5fa6a-cdef-d6f8-51a8-4864ba2f533f', 'p0000000-0000-0000-0000-000000000004', 'milestone', 'TCP & App Layer Protocols', '3-way handshake, window size flow control, DNS, HTTP, TLS parameters.', 8, 'WEEK 3', 300, 320);
+  ('4e55840c-3daf-6fc5-800d-8e0c12b63722', 'f0000000-0000-0000-0000-000000000004', 'topic', 'OSI Reference Model', 'Physical, Data Link, Network, Transport layers services.', 8, 'WEEK 1', 200, 100),
+  ('9c31b0aa-e6c7-dcd3-f683-f7044182af35', 'f0000000-0000-0000-0000-000000000004', 'topic', 'IP Subnetting & Routing', 'Classless routing CIDR, subnet masks, Dijkstra routing, Link State protocol.', 10, 'WEEK 2', 400, 200),
+  ('90c5fa6a-cdef-d6f8-51a8-4864ba2f533f', 'f0000000-0000-0000-0000-000000000004', 'milestone', 'TCP & App Layer Protocols', '3-way handshake, window size flow control, DNS, HTTP, TLS parameters.', 8, 'WEEK 3', 300, 320);
 
 INSERT INTO public.roadmap_template_edges (template_id, source_node_id, target_node_id, animated)
 VALUES
-  ('p0000000-0000-0000-0000-000000000004', '4e55840c-3daf-6fc5-800d-8e0c12b63722', '9c31b0aa-e6c7-dcd3-f683-f7044182af35', true),
-  ('p0000000-0000-0000-0000-000000000004', '9c31b0aa-e6c7-dcd3-f683-f7044182af35', '90c5fa6a-cdef-d6f8-51a8-4864ba2f533f', true);
+  ('f0000000-0000-0000-0000-000000000004', '4e55840c-3daf-6fc5-800d-8e0c12b63722', '9c31b0aa-e6c7-dcd3-f683-f7044182af35', true),
+  ('f0000000-0000-0000-0000-000000000004', '9c31b0aa-e6c7-dcd3-f683-f7044182af35', '90c5fa6a-cdef-d6f8-51a8-4864ba2f533f', true);
 
 -- Seeding template: Object-Oriented Programming
 INSERT INTO public.roadmap_templates (id, title, description, category, difficulty, estimated_hours, tags, visibility, is_public, is_featured, is_trending, is_beginner_friendly, is_advanced)
 VALUES (
-  'p0000000-0000-0000-0000-000000000005',
+  'f0000000-0000-0000-0000-000000000005',
   'Object-Oriented Programming',
   'Study the pillars of OOPs (Encapsulation, Inheritance, Polymorphism, Abstraction), constructors, virtual tables, and interfaces.',
   'Placement',
@@ -979,19 +979,19 @@ VALUES (
   is_advanced = EXCLUDED.is_advanced;
 
 -- Clear previous nodes/edges for this template to prevent duplicates on override
-DELETE FROM public.roadmap_template_nodes WHERE template_id = 'p0000000-0000-0000-0000-000000000005';
-DELETE FROM public.roadmap_template_edges WHERE template_id = 'p0000000-0000-0000-0000-000000000005';
+DELETE FROM public.roadmap_template_nodes WHERE template_id = 'f0000000-0000-0000-0000-000000000005';
+DELETE FROM public.roadmap_template_edges WHERE template_id = 'f0000000-0000-0000-0000-000000000005';
 
 INSERT INTO public.roadmap_template_nodes (id, template_id, node_type, title, description, total, label, position_x, position_y)
 VALUES
-  ('10a7ebc1-b1eb-54da-539b-9606481e5a3d', 'p0000000-0000-0000-0000-000000000005', 'topic', 'Classes & Encapsulation', 'Access modifiers, constructor overloading, this reference structures.', 8, 'STEP 1', 200, 100),
-  ('ae89c3e8-9017-6980-0868-593e9c991338', 'p0000000-0000-0000-0000-000000000005', 'topic', 'Inheritance & Polymorphism', 'Dynamic dispatching, virtual tables, override vs overload concepts.', 8, 'STEP 2', 400, 200),
-  ('cbf46843-04ee-7e96-a8c7-336f2ec126a9', 'p0000000-0000-0000-0000-000000000005', 'milestone', 'Abstraction & Interfaces', 'Pure virtual functions, multiple inheritance problems, interfaces layout.', 6, 'STEP 3', 300, 320);
+  ('10a7ebc1-b1eb-54da-539b-9606481e5a3d', 'f0000000-0000-0000-0000-000000000005', 'topic', 'Classes & Encapsulation', 'Access modifiers, constructor overloading, this reference structures.', 8, 'STEP 1', 200, 100),
+  ('ae89c3e8-9017-6980-0868-593e9c991338', 'f0000000-0000-0000-0000-000000000005', 'topic', 'Inheritance & Polymorphism', 'Dynamic dispatching, virtual tables, override vs overload concepts.', 8, 'STEP 2', 400, 200),
+  ('cbf46843-04ee-7e96-a8c7-336f2ec126a9', 'f0000000-0000-0000-0000-000000000005', 'milestone', 'Abstraction & Interfaces', 'Pure virtual functions, multiple inheritance problems, interfaces layout.', 6, 'STEP 3', 300, 320);
 
 INSERT INTO public.roadmap_template_edges (template_id, source_node_id, target_node_id, animated)
 VALUES
-  ('p0000000-0000-0000-0000-000000000005', '10a7ebc1-b1eb-54da-539b-9606481e5a3d', 'ae89c3e8-9017-6980-0868-593e9c991338', true),
-  ('p0000000-0000-0000-0000-000000000005', 'ae89c3e8-9017-6980-0868-593e9c991338', 'cbf46843-04ee-7e96-a8c7-336f2ec126a9', true);
+  ('f0000000-0000-0000-0000-000000000005', '10a7ebc1-b1eb-54da-539b-9606481e5a3d', 'ae89c3e8-9017-6980-0868-593e9c991338', true),
+  ('f0000000-0000-0000-0000-000000000005', 'ae89c3e8-9017-6980-0868-593e9c991338', 'cbf46843-04ee-7e96-a8c7-336f2ec126a9', true);
 
 -- Seeding template: CSE Placement Preparation
 INSERT INTO public.roadmap_templates (id, title, description, category, difficulty, estimated_hours, tags, visibility, is_public, is_featured, is_trending, is_beginner_friendly, is_advanced)

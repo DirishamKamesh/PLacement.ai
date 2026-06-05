@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { supabase } from '../lib/supabase';
-import { api } from '../lib/api';
+
 
 interface UserProfile {
   id: string;

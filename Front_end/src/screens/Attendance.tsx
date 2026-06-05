@@ -14,7 +14,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { api } from '../lib/api';
+import { AttendanceService } from '../lib/supabaseService';
 
 export const Attendance = () => {
   const [isScanning, setIsScanning] = useState(false);
@@ -36,9 +36,7 @@ export const Attendance = () => {
     try {
       const month = currentDate.getMonth() + 1;
       const year = currentDate.getFullYear();
-      const data = await api.get<{ records: any[]; stats: any }>(
-        `/api/attendance?month=${month}&year=${year}`
-      );
+      const data = await AttendanceService.fetchAttendance(month, year);
       setRecords(data.records);
       setStats(data.stats);
     } catch (err: any) {
@@ -56,10 +54,7 @@ export const Attendance = () => {
     setIsCheckingIn(true);
     setError('');
     try {
-      await api.post('/api/attendance/checkin', {
-        location: 'CS Lab 12',
-        mode: 'qr'
-      });
+      await AttendanceService.checkin('CS Lab 12', 'qr');
       setIsScanning(false);
       // Refresh list
       await fetchAttendance();

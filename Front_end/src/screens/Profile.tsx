@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useAuthStore } from '../stores/authStore';
-import { api } from '../lib/api';
+import { UserService } from '../lib/supabaseService';
 
 export const Profile = () => {
   const { user, updateUser } = useAuthStore();
@@ -59,7 +59,7 @@ export const Profile = () => {
     setError('');
 
     try {
-      const data = await api.put<{ user: any }>('/api/users/profile', {
+      const { user: updatedUser } = await UserService.updateProfile({
         full_name: fullName,
         phone: phone || null,
         bio: bio || null,
@@ -67,7 +67,7 @@ export const Profile = () => {
         department: department || null,
         skills
       });
-      updateUser(data.user);
+      updateUser(updatedUser);
       setIsEditing(false);
     } catch (err: any) {
       setError(err.message || 'Failed to update profile.');
@@ -82,10 +82,10 @@ export const Profile = () => {
     const updatedSkills = [...skills, newSkill.trim()];
     
     try {
-      const data = await api.put<{ user: any }>('/api/users/profile', {
+      const { user: updatedUser } = await UserService.updateProfile({
         skills: updatedSkills
       });
-      updateUser(data.user);
+      updateUser(updatedUser);
       setSkills(updatedSkills);
       setNewSkill('');
     } catch (err: any) {
@@ -96,10 +96,10 @@ export const Profile = () => {
   const handleRemoveSkill = async (skillToRemove: string) => {
     const updatedSkills = skills.filter(s => s !== skillToRemove);
     try {
-      const data = await api.put<{ user: any }>('/api/users/profile', {
+      const { user: updatedUser } = await UserService.updateProfile({
         skills: updatedSkills
       });
-      updateUser(data.user);
+      updateUser(updatedUser);
       setSkills(updatedSkills);
     } catch (err: any) {
       console.error('Failed to remove skill:', err);

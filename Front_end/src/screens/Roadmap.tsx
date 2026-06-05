@@ -25,7 +25,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { api } from '../lib/api';
+import { RoadmapService } from '../lib/supabaseService';
 
 const TopicNode = ({ data }: any) => {
   const isCompleted = data.status === 'completed';
@@ -145,7 +145,7 @@ export const Roadmap = () => {
   const loadRoadmapDetails = async (roadmapId: string) => {
     try {
       setIsLoading(true);
-      const detailed = await api.get<{ roadmap: any; nodes: any[]; edges: any[] }>(`/api/roadmaps/${roadmapId}`);
+      const detailed = await RoadmapService.fetchRoadmap(roadmapId);
       setActiveRoadmap(detailed.roadmap);
       
       // Map to ReactFlow Nodes
@@ -186,7 +186,7 @@ export const Roadmap = () => {
   useEffect(() => {
     const fetchRoadmaps = async () => {
       try {
-        const data = await api.get<{ roadmaps: any[] }>('/api/roadmaps');
+        const data = await RoadmapService.fetchRoadmaps();
         setRoadmaps(data.roadmaps);
         if (data.roadmaps.length > 0) {
           const searchParams = new URLSearchParams(window.location.search);
@@ -208,36 +208,42 @@ export const Roadmap = () => {
   // Update node status handler factory scoped to specific roadmap
   const handleStatusChangeForId = (roadmapId: string) => async (nodeId: string, nextStatus: string) => {
     try {
-      const updatedNodes = nodes.map((n: any) => {
-        if (n.id === nodeId) {
-          const solvedCount = nextStatus === 'completed' ? n.data.total : nextStatus === 'in-progress' ? Math.round(n.data.total / 2) : 0;
-          return {
-            ...n,
-            data: { ...n.data, status: nextStatus, solved: solvedCount }
-          };
-        }
-        return n;
+      let updatedPayload: any[] = [];
+      
+      setNodes((currentNodes) => {
+        const updatedNodes = currentNodes.map((n: any) => {
+          if (n.id === nodeId) {
+            const solvedCount = nextStatus === 'completed' ? n.data.total : nextStatus === 'in-progress' ? Math.round(n.data.total / 2) : 0;
+            return {
+              ...n,
+              data: { ...n.data, status: nextStatus, solved: solvedCount }
+            };
+          }
+          return n;
+        });
+        
+        updatedPayload = updatedNodes.map((n: any) => ({
+          id: n.id,
+          node_type: n.type,
+          title: n.data.title,
+          status: n.data.status,
+          solved: n.data.solved,
+          total: n.data.total,
+          label: n.data.label,
+          position_x: n.position.x,
+          position_y: n.position.y
+        }));
+
+        return updatedNodes;
       });
 
-      setNodes(updatedNodes);
-
       // Send to server
-      const payload = updatedNodes.map((n: any) => ({
-        id: n.id,
-        node_type: n.type,
-        title: n.data.title,
-        status: n.data.status,
-        solved: n.data.solved,
-        total: n.data.total,
-        label: n.data.label,
-        position_x: n.position.x,
-        position_y: n.position.y
-      }));
-
-      await api.put(`/api/roadmaps/${roadmapId}/nodes`, { nodes: payload });
+      if (updatedPayload.length > 0) {
+        await RoadmapService.batchUpdateNodes(roadmapId, updatedPayload);
+      }
 
       // Refresh roadmap stats
-      const detailed = await api.get<{ roadmap: any; nodes: any[]; edges: any[] }>(`/api/roadmaps/${roadmapId}`);
+      const detailed = await RoadmapService.fetchRoadmap(roadmapId);
       setActiveRoadmap(detailed.roadmap);
     } catch (err) {
       console.error('Error changing node status:', err);
@@ -262,7 +268,7 @@ export const Roadmap = () => {
           position_y: n.position.y
         }));
 
-        await api.put(`/api/roadmaps/${activeRoadmap.id}/nodes`, { nodes: payload });
+        await RoadmapService.batchUpdateNodes(activeRoadmap.id, payload);
       } catch (err) {
         console.error('Error auto-saving node positions:', err);
       }

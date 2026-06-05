@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import ReactMarkdown from 'react-markdown';
+import { ChatService } from '../lib/supabaseService';
 
 interface ChatMessage {
   role: 'user' | 'model';
@@ -65,17 +66,8 @@ export const Workspace = () => {
     setIsChatLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          message: textToSend,
-          history: chatMessages.map(m => ({ role: m.role, parts: [{ text: m.parts }] }))
-        }),
-      });
-
-      const data = await response.json();
-      if (data.error) throw new Error(data.error);
+      const history = chatMessages.map(m => ({ role: m.role, parts: [{ text: m.parts }] }));
+      const data = await ChatService.sendChatMessage(textToSend, history, 'workspace');
 
       setChatMessages(prev => [...prev, { role: 'model', parts: data.text }]);
     } catch (error) {

@@ -14,7 +14,7 @@ import {
   Trash2
 } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { api } from '../lib/api';
+import { ResumeService } from '../lib/supabaseService';
 
 export const ResumeLab = () => {
   const [resumes, setResumes] = useState<any[]>([]);
@@ -30,7 +30,7 @@ export const ResumeLab = () => {
   // Fetch list of resumes on load
   const fetchResumes = async () => {
     try {
-      const data = await api.get<{ resumes: any[] }>('/api/resumes');
+      const data = await ResumeService.fetchResumes();
       setResumes(data.resumes);
       if (data.resumes.length > 0) {
         setActiveResume(data.resumes[0]);
@@ -63,11 +63,7 @@ export const ResumeLab = () => {
     setError('');
 
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('target_role', targetRole);
-
-      const data = await api.upload<{ resume: any }>('/api/resumes/upload', formData);
+      const data = await ResumeService.uploadResume(file, targetRole);
       setResumes((prev) => [data.resume, ...prev]);
       setActiveResume(data.resume);
 
@@ -85,9 +81,7 @@ export const ResumeLab = () => {
     setIsAnalyzing(true);
     setError('');
     try {
-      const data = await api.post<{ resume: any }>('/api/resumes/' + id + '/analyze', {
-        target_role: targetRole,
-      });
+      const data = await ResumeService.analyzeResume(id, targetRole);
       setActiveResume(data.resume);
       // Update in resumes list
       setResumes((prev) => prev.map(r => r.id === id ? data.resume : r));
@@ -102,7 +96,7 @@ export const ResumeLab = () => {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this resume?')) return;
     try {
-      await api.delete('/api/resumes/' + id);
+      await ResumeService.deleteResume(id);
       const filtered = resumes.filter(r => r.id !== id);
       setResumes(filtered);
       if (activeResume?.id === id) {

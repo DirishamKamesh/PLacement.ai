@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, X, Send, User, Bot, Loader2, Minimize2, Maximize2, MessageSquarePlus } from 'lucide-react';
 import { cn } from '../lib/utils';
 import Markdown from 'react-markdown';
-import { api } from '../lib/api';
+import { ChatService } from '../lib/supabaseService';
 
 interface Message {
   role: 'user' | 'model';
@@ -26,21 +26,21 @@ export const AIMentor = () => {
 
     const loadOrCreateConversation = async () => {
       try {
-        const listData = await api.get<{ conversations: any[] }>('/api/chat/conversations');
+        const listData = await ChatService.fetchConversations();
         
         if (listData.conversations.length > 0) {
           const latest = listData.conversations[0];
           setActiveConversationId(latest.id);
           
           // Fetch complete history
-          const detailed = await api.get<{ conversations: any[] }>('/api/chat/conversations');
+          const detailed = await ChatService.fetchConversations();
           const matched = detailed.conversations.find((c: any) => c.id === latest.id);
           if (matched && matched.messages) {
             setMessages(matched.messages);
           }
         } else {
           // Create new conversation
-          const newConv = await api.post<{ conversation: any }>('/api/chat/conversations', { context: 'global' });
+          const newConv = await ChatService.createConversation('global');
           setActiveConversationId(newConv.conversation.id);
           setMessages([]);
         }
@@ -69,11 +69,8 @@ export const AIMentor = () => {
 
     try {
       // Send chat request with current message history formatted for Gemini
-      const chatResponse = await api.post<{ text: string }>('/api/chat', { 
-        message: input, 
-        history: messages.map(m => ({ role: m.role, parts: [{ text: m.parts }] })),
-        context: 'global'
-      });
+      const history = messages.map(m => ({ role: m.role, parts: [{ text: m.parts }] }));
+      const chatResponse = await ChatService.sendChatMessage(input, history, 'global');
 
       const assistantMessage: Message = { role: 'model', parts: chatResponse.text };
       const finalMessages = [...updatedMessages, assistantMessage];
@@ -81,9 +78,7 @@ export const AIMentor = () => {
 
       // Save messages back to the persistent conversation database record
       if (activeConversationId) {
-        await api.put(`/api/chat/conversations/${activeConversationId}`, {
-          messages: finalMessages
-        });
+        await ChatService.updateConversation(activeConversationId, finalMessages);
       }
     } catch (error) {
       console.error('Chat error:', error);
@@ -96,7 +91,7 @@ export const AIMentor = () => {
   const handleNewConversation = async () => {
     setIsLoading(true);
     try {
-      const newConv = await api.post<{ conversation: any }>('/api/chat/conversations', { context: 'global' });
+      const newConv = await ChatService.createConversation('global');
       setActiveConversationId(newConv.conversation.id);
       setMessages([]);
     } catch (err) {
